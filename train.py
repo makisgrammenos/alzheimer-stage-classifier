@@ -69,21 +69,6 @@ model.save('./model/model.h5')
 test_loss, test_acc = model.evaluate(test_data, test_labels)
 print("Model Accuracy: ", test_acc, "Model Loss: ", test_loss)
 
-# nimage = cv2.imread("26 (25).jpg.jpg", cv2.IMREAD_GRAYSCALE)
-# image = cv2.resize(nimage,(SIZE,SIZE))
-# image = image/255.0
-# prediction = model.predict(np.array(image).reshape(-1,SIZE,SIZE,1))
-# pclass = np.argmax(prediction)
-# plt.imshow(image,cmap="gray")
-# pValue = "Prediction: {0}".format(categories[int(pclass)])
-# plt.title(pValue)
-# realvalue = "Real Value {0}".format(categories[1])
-# plt.figtext(0,0,realvalue)
-# plt.show()
-
-
-# print(train_data.shape)
-# print(model.summary())
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['val_accuracy'])
 plt.title('Model accuracy')
