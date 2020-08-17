@@ -35,6 +35,8 @@ The model will be saved in the **model**  directory with name "**model.h5**" ove
 #####Model Loss
 
 ![loss](/images/loss.png)
+
+
 ##Using the model for making predictions
 To use the model for making predictions first put  brain **MRI** scans in the **test directory**
   
