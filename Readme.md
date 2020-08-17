@@ -14,7 +14,7 @@ The  neural network classifies a patient's brain MRI scan into the following cat
 ## Dataset
 The dataset used can me found [here](https://www.kaggle.com/tourist55/alzheimers-dataset-4-class-of-images). I have merged
 the train and test directories found in the dataset , and split them  using **sklearn.modelselection.train_test_split** to  achieve better results in the training process.
-##Before you start
+## Before you start
 Before you start playing with the model run in the repo directory the following command to install the required packages 
 for the model to run
 ```shell script
