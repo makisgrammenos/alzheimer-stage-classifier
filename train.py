@@ -14,10 +14,6 @@ categories = ["NonDemented", "MildDemented", "ModerateDemented", "VeryMildDement
 SIZE = 120
 
 
-def myprint(s):
-    with open('modelsummary.txt', 'w+') as f:
-        print(s, file=f)
-
 
 def getData():
     rawdata = []
@@ -74,9 +70,6 @@ history = model.fit(train_data, train_labels, epochs=10, validation_data=(val_da
 model.save('./model/model.h5')
 test_loss, test_acc = model.evaluate(test_data, test_labels)
 print("Model Accuracy: ", test_acc, "Model Loss: ", test_loss)
-with open('modelsummary.txt', 'w') as f:
-    with redirect_stdout(f):
-        model.summary()
 
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['val_accuracy'])
