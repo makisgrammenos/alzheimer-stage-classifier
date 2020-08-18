@@ -20,6 +20,35 @@ for the model to run
 ```shell script
 $ pip install -r requirments.txt
 ```
+## Model Architecture 
+Convolutional Neural Network Architecture: 
+```shell script
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 118, 118, 64)      640       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 59, 59, 64)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 57, 57, 64)        36928     
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 28, 28, 64)        0         
+_________________________________________________________________
+flatten (Flatten)            (None, 50176)             0         
+_________________________________________________________________
+dense (Dense)                (None, 128)               6422656   
+_________________________________________________________________
+dropout (Dropout)            (None, 128)               0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 4)                 516       
+=================================================================
+Total params: 6,460,740
+Trainable params: 6,460,740
+Non-trainable params: 0
+_________________________________________________________________
+
+```
 ## Training the model
 To train the model  all you have to do is to run :
 ```
@@ -44,4 +73,5 @@ After, run :
 ```shell script
 $ python predict.py 
 ```
-The script will take care of the  prediction process
+The script will load all the photos located in the test folder and will try to predict the Alzheimer stage based on the
+MRI scan

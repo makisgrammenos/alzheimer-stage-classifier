@@ -8,11 +8,15 @@ import random
 import sklearn.model_selection as model_selection
 import datetime
 from model import createModel
-
-
+from contextlib import redirect_stdout
 categories = ["NonDemented", "MildDemented", "ModerateDemented", "VeryMildDemented"]
 
 SIZE = 120
+
+
+def myprint(s):
+    with open('modelsummary.txt', 'w+') as f:
+        print(s, file=f)
 
 
 def getData():
@@ -49,10 +53,12 @@ def getData():
 # test_data,test_labels = Data("test")
 data, labels = getData()
 train_data, test_data, train_labels, test_labels = model_selection.train_test_split(data, labels, test_size=0.20)
+
+train_data, val_data, train_labels, val_labels = model_selection.train_test_split(train_data, train_labels,
+                                                                                  test_size=0.10)
 print(len(train_data), " ", len(train_labels), len(test_data), " ", len(test_labels))
 
 model = createModel(train_data)
-
 
 checkpoint = keras.callbacks.ModelCheckpoint(filepath='./model/model.h5', save_best_only=True, monitor='val_loss',
                                              mode='min')
@@ -62,12 +68,15 @@ model.compile(optimizer=opt, loss="sparse_categorical_crossentropy", metrics=["a
 #
 
 log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-history = model.fit(train_data, train_labels, epochs=10, validation_data=(test_data, test_labels),
-                 )
+history = model.fit(train_data, train_labels, epochs=10, validation_data=(val_data, val_labels)
+                    )
 
 model.save('./model/model.h5')
 test_loss, test_acc = model.evaluate(test_data, test_labels)
 print("Model Accuracy: ", test_acc, "Model Loss: ", test_loss)
+with open('modelsummary.txt', 'w') as f:
+    with redirect_stdout(f):
+        model.summary()
 
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['val_accuracy'])
