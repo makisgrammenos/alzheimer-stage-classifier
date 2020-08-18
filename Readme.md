@@ -2,7 +2,7 @@
 
 This is my first attempt creating  Convolutional Neural Networks.I created
 a CNN to predict  if a patient has Alzheimer's Disease   and to classify the current Alzheimer stage based on patient's brain MRI scan
-The CNN has 93% accuracy 
+The CNN has approximately 95% accuracy 
 
 ## Stages for classification
 The  neural network classifies a patient's brain MRI scan into the following categories
