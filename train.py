@@ -62,7 +62,6 @@ opt = keras.optimizers.Adam(learning_rate=0.001)
 model.compile(optimizer=opt, loss="sparse_categorical_crossentropy", metrics=["accuracy"], )
 
 
-log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 history = model.fit(train_data, train_labels, epochs=10, validation_data=(val_data, val_labels)
                     )
 
