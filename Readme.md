@@ -75,3 +75,11 @@ $ python predict.py
 ```
 The script will load all the photos located in the test folder and will try to predict the Alzheimer stage based on the
 MRI scan
+
+## Updates and Feedback
+
+I am looking forward to get your feedback on any issues that may occur.
+A new update is coming soon to improve the model's accuracy
+
+# Licence 
+All rights reserved.
