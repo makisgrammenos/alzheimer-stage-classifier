@@ -81,5 +81,5 @@ MRI scan
 I am looking forward to get your feedback on any issues that may occur.
 A new update is coming soon to improve the model's accuracy
 
-# Licence 
+# License 
 All rights reserved.
