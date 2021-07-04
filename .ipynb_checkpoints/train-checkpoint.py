@@ -49,12 +49,14 @@ def getData():
 data, labels = getData()
 train_data, test_data, train_labels, test_labels = model_selection.train_test_split(data, labels, test_size=0.20)
 
-train_data, val_data, train_labels, val_labels = model_selection.train_test_split(train_data, train_labels,test_size=0.10)
+train_data, val_data, train_labels, val_labels = model_selection.train_test_split(train_data, train_labels,
+                                                                                  test_size=0.10)
 print(len(train_data), " ", len(train_labels), len(test_data), " ", len(test_labels))
 
 model = createModel(train_data)
 
-checkpoint = keras.callbacks.ModelCheckpoint(filepath='./model/model.h5', save_best_only=True, monitor='val_loss', mode='min')
+checkpoint = keras.callbacks.ModelCheckpoint(filepath='./model/model.h5', save_best_only=True, monitor='val_loss',
+                                             mode='min')
 
 opt = keras.optimizers.Adam(learning_rate=0.001)
 model.compile(optimizer=opt, loss="sparse_categorical_crossentropy", metrics=["accuracy"], )
